@@ -439,7 +439,7 @@ class _App:
         ])
 
         if res.returncode != 0:
-            _error('ffmpeg returned {}'.format(res.returncode))
+            _error('gifsicle returned {}'.format(res.returncode))
 
         self._create_gif_window.set_gif_preview(self._OPTI_GIF_PATH)
 
