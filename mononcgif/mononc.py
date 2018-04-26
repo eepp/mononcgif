@@ -20,6 +20,7 @@
 
 import sys
 import os
+import shutil
 import subprocess
 from functools import partial
 import PyQt5.QtWidgets as QtWidgets
@@ -355,6 +356,7 @@ class _App:
 
     def __init__(self, app):
         self._app = app
+        self._user_gif_path = sys.argv[1]
 
     def run(self):
         self._select_screen_window = _QSelectScreenWindow(self._screen_geo_clicked)
@@ -441,6 +443,7 @@ class _App:
         if res.returncode != 0:
             _error('gifsicle returned {}'.format(res.returncode))
 
+        shutil.copy(self._OPTI_GIF_PATH, self._user_gif_path)
         self._create_gif_window.set_gif_preview(self._OPTI_GIF_PATH)
 
 
